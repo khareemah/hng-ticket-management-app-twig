@@ -35,7 +35,7 @@
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
       <div class="px-4 py-4 flex flex-col space-y-3">
         {% if isAuthenticated %}
-          <a href="/dashboard" class="block btn-primary text-white font-medium">Dashboard</a>
+          <a href="/dashboard" class="block btn-primary text-white font-medium btn-primary">Dashboard</a>
         {% else %}
           <a href="/login" class="block text-[#262626] hover:text-gray-600 border border-border px-3 py-2 rounded-md text-center">Login</a>
           <a href="/signup" class="btn-primary text-center">Get Started</a>
@@ -46,55 +46,87 @@
 
   <!-- Hero Section -->
 
-  <section class="relative py-40 md:py-20 overflow-hidden" style="border:">
-  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+ <section class="relative py-40 md:py-28 overflow-hidden bg-background">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Left content -->
       <div>
-        <h1 class="text-5xl md:text-6xl font-bold text-foreground mb-6 text-balance">
+        <h1 class="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
           Manage Your Tickets Effortlessly
         </h1>
-        <p class="text-xl text-muted-foreground mb-8 text-pretty">
-          TicketFlow is a modern ticket management system designed to
-          streamline your workflow and boost productivity.
+        <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg">
+          TicketFlow is a modern ticket management system designed to streamline
+          your workflow and boost productivity.
         </p>
 
         <div class="flex gap-4">
+          <div class="flex items-center gap-4">
           {% if isAuthenticated %}
-            <a 
-              href="/dashboard"
-              class="px-8 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition font-medium btn-primary"
-            >
-              Dashboard
-            </a>
+            <a href="/dashboard" class="btn-primary text-white">Dashboard</a>
           {% else %}
-            <a 
-              href="/login"
-              class="bg-background border border-border text-black hover:bg-background px-4 py-2 rounded-md transition font-medium w-[120px] flex items-center justify-center"
-            >
-              Login
-            </a>
-            <a 
-              href="/signup"
-              class="bg-primary  btn-primary rounded-md text-primary-foreground px-4 py-2 hover:bg-primary/90 transition font-medium"
-            >
-              Get Started
-            </a>
+            <a href="/login" class="text-[#262626] hover:text-gray-600 w-[120px] text-center border border-border px-3 py-2 rounded-md">Login</a>
+            <a href="/signup" class="btn-primary">Get Started</a>
           {% endif %}
         </div>
+        </div>
+      </div>
+
+      <!-- Decorative blur elements -->
+      <div class="relative h-96 hidden md:block">
+        <!-- Top right gradient blob -->
+        <div
+          class="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl"
+          style="background: linear-gradient(135deg, #3B82F6aa, #60A5FA66, transparent);"
+        ></div>
+
+        <!-- Bottom left gradient blob -->
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl"
+          style="background: linear-gradient(45deg, #60A5FA55, #3B82F633, transparent);"
+        ></div>
+
+        <!-- Subtle middle circle -->
+        <div
+          class="absolute inset-0 m-auto w-40 h-40 rounded-full blur-2xl"
+          style="background-color: #3B82F622;"
+        ></div>
       </div>
     </div>
-      <!-- Decorative circles -->
-          <div class="relative h-96 hidden md:block">
-            <div
-              class="absolute top-0 right-0 w-64 h-64 bg-primary/30 rounded-full blur-3xl"
-            ></div>
-            <div
-              class="absolute bottom-0 left-0 w-48 h-48 bg-accent/30 rounded-full blur-3xl"
-            ></div>
-          </div>
-        </div>
+  </div>
+
+  <!-- Layered Blue Wave Background -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg
+      class="w-full h-auto"
+      viewBox="0 0 1440 200"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- First wave -->
+      <path
+        d="M0,160 Q360,120 720,160 T1440,160 L1440,200 L0,200 Z"
+        fill="url(#blueWave1)"
+      />
+      <!-- Second wave -->
+      <path
+        d="M0,180 Q360,140 720,180 T1440,180 L1440,200 L0,200 Z"
+        fill="url(#blueWave2)"
+      />
+
+      <defs>
+        <linearGradient id="blueWave1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.15" />
+        </linearGradient>
+        <linearGradient id="blueWave2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.1" />
+          <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.1" />
+        </linearGradient>
+      </defs>
+    </svg>
   </div>
 </section>
+
 
 
   <!-- Features Section -->
