@@ -1,0 +1,147 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+use Twig\TemplateWrapper;
+
+/* signup.html.twig */
+class __TwigTemplate_9d3c73b68d407be826dcb60e9a2ce4f3 extends Template
+{
+    private Source $source;
+    /**
+     * @var array<string, Template>
+     */
+    private array $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'content' => [$this, 'block_content'],
+        ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $this->parent = $this->load("base.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 3
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_title(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        yield "Signup - TicketFlow";
+        yield from [];
+    }
+
+    // line 5
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_content(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        // line 6
+        yield "<div class=\"min-h-screen flex items-center justify-center px-4 py-12\">
+    <div class=\"w-full max-w-md\">
+        <div class=\"card\">
+            <h2 class=\"text-3xl font-bold mb-2\">Create Account</h2>
+            <p class=\"text-gray-600 mb-6\">Join TicketFlow today</p>
+
+            ";
+        // line 12
+        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 12), "get", ["error"], "method", false, false, false, 12)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 13
+            yield "                <div class=\"error-message\">
+                    ";
+            // line 14
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 14), "get", ["error"], "method", false, false, false, 14), "html", null, true);
+            yield "
+                </div>
+            ";
+        }
+        // line 17
+        yield "
+            <form method=\"POST\" class=\"space-y-4\">
+                <div>
+                    <label class=\"block text-sm font-medium mb-2\">Full Name</label>
+                    <input type=\"text\" name=\"name\" class=\"input-field\" required>
+                </div>
+
+                <div>
+                    <label class=\"block text-sm font-medium mb-2\">Email</label>
+                    <input type=\"email\" name=\"email\" class=\"input-field\" required>
+                </div>
+
+                <div>
+                    <label class=\"block text-sm font-medium mb-2\">Password</label>
+                    <input type=\"password\" name=\"password\" class=\"input-field\" required>
+                </div>
+
+                <button type=\"submit\" class=\"btn-primary w-full py-2\">Sign Up</button>
+            </form>
+
+            <p class=\"text-center mt-6 text-gray-600\">
+                Already have an account? <a href=\"/login\" class=\"text-purple-600 hover:underline\">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+";
+        yield from [];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName(): string
+    {
+        return "signup.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo(): array
+    {
+        return array (  89 => 17,  83 => 14,  80 => 13,  78 => 12,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+    }
+
+    public function getSourceContext(): Source
+    {
+        return new Source("", "signup.html.twig", "C:\\Users\\user\\Desktop\\twig ticket app\\templates\\signup.html.twig");
+    }
+}
