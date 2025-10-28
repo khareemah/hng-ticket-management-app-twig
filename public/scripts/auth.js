@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
+  const demoBtn = document.getElementById("demoBtn");
 
   if (signupForm) {
     signupForm.addEventListener("submit", (e) => {
@@ -49,6 +50,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       window.location.href = "/index.php?page=dashboard";
+    });
+  }
+
+  // DEMO LOGIN BUTTON LOGIC
+  if (demoBtn) {
+    demoBtn.addEventListener("click", () => {
+      const demoUser = {
+        name: "Demo User",
+        email: "demo@ticketflow.com",
+        password: "123456",
+      };
+
+      // Ensure demo user exists in localStorage
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      const exists = users.find((u) => u.email === demoUser.email);
+      if (!exists) {
+        users.push(demoUser);
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+
+      // Auto-fill and auto-login
+      document.getElementById("loginEmail").value = demoUser.email;
+      document.getElementById("loginPassword").value = demoUser.password;
+
+      // Optional: auto-submit
+      setTimeout(() => loginForm.requestSubmit(), 500);
     });
   }
 });
