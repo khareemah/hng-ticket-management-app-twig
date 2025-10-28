@@ -70,158 +70,252 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
         $macros = $this->macros;
         // line 6
         yield "<div class=\"min-h-screen bg-gray-50\">
-    <!-- Navigation -->
-    <nav class=\"bg-white border-b border-gray-200\">
-        <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">
-            <div class=\"flex justify-between items-center h-16\">
-                <h1 class=\"text-2xl font-bold text-purple-600\">TicketFlow</h1>
-                <div class=\"hidden md:flex items-center gap-4\">
-                    <a href=\"/dashboard\" class=\"text-gray-700 hover:text-purple-600\">Dashboard</a>
-                    <a href=\"/logout\" class=\"btn-secondary\">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <!-- Header -->
+  <header class=\"bg-card border-b border-border sticky top-0 z-40\">
+    <div class=\"max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center bg-white\">
+      <!-- Left: Title -->
+      <div>
+        <h1 class=\"text-2xl font-bold\">Tickets</h1>
+        <p class=\"text-muted-foreground text-sm sm:text-base\">
+          Manage all your support tickets
+        </p>
+      </div>
 
-    <!-- Main Content -->
-    <main class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12\">
-        <div class=\"flex justify-between items-center mb-8\">
-            <div>
-                <h2 class=\"text-3xl font-bold\">Tickets</h2>
-                <p class=\"text-gray-600\">Manage all your tickets</p>
-            </div>
-            <a href=\"/dashboard/tickets/create\" class=\"btn-primary\">Create Ticket</a>
-        </div>
+      <!-- Right: Desktop Menu -->
+      <div class=\"hidden sm:flex gap-4 items-center\">
+        <a href=\"/dashboard/tickets/create\"
+           class=\"px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition btn-primary\">
+          Create Ticket
+        </a>
+        <a href=\"/dashboard\"
+           class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1]\">
+          Dashboard
+        </a>
+        <form action=\"/logout\" method=\"POST\" class=\"inline\">
+          <button type=\"submit\"
+                  class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1]\">
+            Logout
+          </button>
+        </form>
+      </div>
 
-        <!-- Filters -->
-        <div class=\"card mb-6\">
-            <div class=\"flex gap-4 flex-wrap\">
-                <button class=\"filter-btn active\" data-filter=\"all\">All</button>
-                <button class=\"filter-btn\" data-filter=\"open\">Open</button>
-                <button class=\"filter-btn\" data-filter=\"in_progress\">In Progress</button>
-                <button class=\"filter-btn\" data-filter=\"closed\">Closed</button>
-            </div>
-        </div>
+      <!-- Mobile Menu Button -->
+      <button id=\"menuToggle\" class=\"sm:hidden p-2 rounded-md border border-border hover:bg-gray-100 transition\">
+        <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 text-gray-700\" fill=\"none\"
+             viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\">
+          <path stroke-linecap=\"round\" stroke-linejoin=\"round\"
+                d=\"M4 6h16M4 12h16M4 18h16\" />
+        </svg>
+      </button>
+    </div>
 
-        <!-- Tickets List -->
-        <div id=\"ticketsList\" class=\"space-y-4\">
-            <!-- Tickets will be loaded here by JavaScript -->
-        </div>
-    </main>
+    <!-- Mobile Menu -->
+    <div id=\"mobileMenu\" class=\"sm:hidden hidden flex flex-col gap-2 px-4 pb-4 bg-white border-t border-border\">
+      <a href=\"/dashboard/tickets/create\"
+         class=\"px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition btn-primary\">
+        Create Ticket
+      </a>
+      <a href=\"/dashboard\"
+         class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1]\">
+        Dashboard
+      </a>
+      <form action=\"/logout\" method=\"POST\" class=\"inline\">
+        <button type=\"submit\"
+                class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1] w-full text-left\">
+          Logout
+        </button>
+      </form>
+    </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class=\"bg-white border-t border-gray-200 mt-12 py-8 px-4\">
-        <div class=\"max-w-7xl mx-auto text-center text-gray-600\">
-            <p>&copy; 2025 TicketFlow. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- Main -->
+  <main class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12\">
+    <!-- Filters -->
+    <div class=\"flex gap-4 flex-wrap mb-6\">
+      <button class=\"filter-btn active\" data-filter=\"all\">All</button>
+      <button class=\"filter-btn\" data-filter=\"open\">Open</button>
+      <button class=\"filter-btn\" data-filter=\"in_progress\">In Progress</button>
+      <button class=\"filter-btn\" data-filter=\"closed\">Closed</button>
+    </div>
+
+    <!-- Tickets -->
+    <div id=\"ticketsList\" class=\"space-y-4\"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class=\"bg-[#004cc0]/10 border-t border-gray-200 mt-12 py-12 px-4\">
+    <div class=\"border-t border-border pt-8 text-center text-muted-foreground\">
+      <p>&copy; 2025 TicketFlow. All rights reserved.</p>
+    </div>
+  </footer>
 </div>
 ";
         yield from [];
     }
 
-    // line 55
+    // line 88
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_extra_css(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 56
+        // line 89
         yield "<style>
-    .filter-btn {
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--border);
-        border-radius: 0.375rem;
-        background-color: white;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #d2e6ff;
+    color: black;
+    font-weight: 500;
+  }
 
-    .filter-btn.active {
-        background-color: var(--primary);
-        color: white;
-        border-color: var(--primary);
-    }
+  .filter-btn.active {
+    color: white;
+    background-color: #0049c1;
+  }
 
-    .ticket-card {
-        background-color: white;
-        border: 1px solid var(--border);
-        border-radius: 0.5rem;
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        gap: 1rem;
-    }
+  .ticket-card {
+    background-color: white;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    position: relative;
+  }
 
-    .ticket-card:hover {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+  .ticket-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .confirm-inline {
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .confirm-inline button {
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
 </style>
 ";
         yield from [];
     }
 
-    // line 89
+    // line 144
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_extra_js(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 90
+        // line 145
         yield "<script>
-    let currentFilter = 'all';
+  // Handle mobile menu toggle
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  });
 
-    function loadTickets() {
-        const tickets = JSON.parse(localStorage.getItem('ticketapp_tickets') || '[]');
-        const filtered = currentFilter === 'all' ? tickets : tickets.filter(t => t.status === currentFilter);
-        
-        const ticketsList = document.getElementById('ticketsList');
-        
-        if (filtered.length === 0) {
-            ticketsList.innerHTML = '<div class=\"card text-center py-12\"><p class=\"text-gray-600\">No tickets found</p></div>';
-            return;
-        }
+  let currentFilter = 'all';
+  let openConfirmId = null;
 
-        ticketsList.innerHTML = filtered.map(ticket => `
-            <div class=\"ticket-card\">
-                <div class=\"flex-1\">
-                    <h3 class=\"text-lg font-bold mb-2\">\${ticket.title}</h3>
-                    <p class=\"text-gray-600 mb-3\">\${ticket.description}</p>
-                    <div class=\"flex gap-2 flex-wrap\">
-                        <span class=\"status-badge status-\${ticket.status}\">\${ticket.status.replace('_', ' ')}</span>
-                        <span class=\"priority-\${ticket.priority} font-medium\">\${ticket.priority.charAt(0).toUpperCase() + ticket.priority.slice(1)} Priority</span>
-                    </div>
-                </div>
-                <div class=\"flex gap-2\">
-                    <a href=\"/dashboard/tickets/edit?id=\${ticket.id}\" class=\"btn-secondary text-sm\">Edit</a>
-                    <button onclick=\"deleteTicket('\${ticket.id}')\" class=\"btn-secondary text-sm bg-red-50 text-red-600 hover:bg-red-100\">Delete</button>
-                </div>
+  function loadTickets() {
+    const tickets = JSON.parse(localStorage.getItem('ticketapp_tickets') || '[]');
+    const filtered = currentFilter === 'all' ? tickets : tickets.filter(t => t.status === currentFilter);
+    const ticketsList = document.getElementById('ticketsList');
+
+    if (filtered.length === 0) {
+      ticketsList.innerHTML = `
+        <div class=\"bg-white border border-border rounded-lg p-8 sm:p-12 text-center\">
+          <p class=\"text-gray-700 text-lg mb-4\">No tickets found</p>
+          <a href=\"/dashboard/tickets/create\"
+             class=\"text-white bg-primary rounded-md px-6 py-3 text-[14px] btn-primary\">
+            Create your first ticket
+          </a>
+        </div>`;
+      return;
+    }
+
+    ticketsList.innerHTML = filtered.map(ticket => `
+      <div class=\"ticket-card flex flex-col\" id=\"ticket-\${ticket.id}\">
+        <div class=\"flex w-full justify-between items-start\">
+          <div class=\"flex-1\">
+            <h3 class=\"text-lg font-bold mb-2\">\${ticket.title}</h3>
+            <p class=\"text-gray-600 mb-3\">\${ticket.description}</p>
+            <div class=\"flex gap-2 flex-wrap\">
+              <span class=\"status-badge status-\${ticket.status}\">\${ticket.status.replace('_', ' ')}</span>
+              <span class=\"priority-\${ticket.priority} font-medium\">
+                \${ticket.priority.charAt(0).toUpperCase() + ticket.priority.slice(1)} Priority
+              </span>
             </div>
-        `).join('');
+          </div>
+          <div class=\"flex gap-2\">
+            <a href=\"/dashboard/tickets/edit?id=\${ticket.id}\"
+               class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1]\">Edit</a>
+            <button onclick=\"toggleConfirm('\${ticket.id}')\"
+                    class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition text-red-600\">Delete</button>
+          </div>
+        </div>
+        <div id=\"confirm-\${ticket.id}\" class=\"hidden w-full flex flex-col items-start gap-3 bg-[#FFEAEA] confirm-inline text-red-600\">
+          <span>Are you sure you want to delete this ticket?</span>
+          <div class=\"flex gap-2\">
+            <button onclick=\"cancelConfirm('\${ticket.id}')\" class=\"bg-white border border-border hover:bg-white\">Cancel</button>
+            <button onclick=\"deleteTicket('\${ticket.id}')\" class=\"bg-red-600 hover:bg-red-700 text-white\">Delete</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function toggleConfirm(id) {
+    if (openConfirmId && openConfirmId !== id) {
+      document.getElementById(`confirm-\${openConfirmId}`).classList.add('hidden');
     }
+    const el = document.getElementById(`confirm-\${id}`);
+    el.classList.toggle('hidden');
+    openConfirmId = el.classList.contains('hidden') ? null : id;
+  }
 
-    function deleteTicket(id) {
-        if (confirm('Are you sure you want to delete this ticket?')) {
-            const tickets = JSON.parse(localStorage.getItem('ticketapp_tickets') || '[]');
-            const filtered = tickets.filter(t => t.id !== id);
-            localStorage.setItem('ticketapp_tickets', JSON.stringify(filtered));
-            loadTickets();
-        }
-    }
+  function cancelConfirm(id) {
+    document.getElementById(`confirm-\${id}`).classList.add('hidden');
+    openConfirmId = null;
+  }
 
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentFilter = this.dataset.filter;
-            loadTickets();
-        });
-    });
-
+  function deleteTicket(id) {
+    const tickets = JSON.parse(localStorage.getItem('ticketapp_tickets') || '[]');
+    const filtered = tickets.filter(t => t.id !== id);
+    localStorage.setItem('ticketapp_tickets', JSON.stringify(filtered));
     loadTickets();
+    openConfirmId = null;
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.dataset.filter;
+      loadTickets();
+    });
+  });
+
+  loadTickets(); 
 </script>
 ";
         yield from [];
@@ -248,7 +342,7 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  174 => 90,  167 => 89,  131 => 56,  124 => 55,  72 => 6,  65 => 5,  54 => 3,  43 => 1,);
+        return array (  229 => 145,  222 => 144,  164 => 89,  157 => 88,  72 => 6,  65 => 5,  54 => 3,  43 => 1,);
     }
 
     public function getSourceContext(): Source

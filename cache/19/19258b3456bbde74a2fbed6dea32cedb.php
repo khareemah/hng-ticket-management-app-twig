@@ -55,23 +55,24 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
     <script src=\"https://cdn.tailwindcss.com\"></script>
     <style>
         :root {
+            <!-- Updated all color variables from purple to blue to match original design -->
             --background: #faf8f6;
             --foreground: #262420;
             --card: #ffffff;
             --card-foreground: #262420;
-            --primary: #5b4b8a;
+            --primary: #004cc0;
             --primary-foreground: #ffffff;
-            --secondary: #ede9f6;
+            --secondary: #ddf4ff;
             --secondary-foreground: #262420;
-            --muted: #ede9f6;
+            --muted: #ddf4ff;
             --muted-foreground: #79747e;
-            --accent: #5b4b8a;
+            --accent: #0969da;
             --accent-foreground: #ffffff;
             --destructive: #b3261e;
             --destructive-foreground: #ffffff;
-            --border: #ede9f6;
+            --border: #ddf4ff;
             --input: #f5f3f0;
-            --ring: #5b4b8a;
+            --ring: #0969da;
             --status-open: #4caf50;
             --status-in-progress: #ff9800;
             --status-closed: #757575;
@@ -80,7 +81,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         body {
             background-color: var(--background);
             color: var(--foreground);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: \"Geist\", system-ui, -apple-system, sans-serif !important;
         }
 
         .btn-primary {
@@ -126,7 +127,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         .input-field:focus {
             outline: none;
             border-color: var(--ring);
-            box-shadow: 0 0 0 3px rgba(91, 75, 138, 0.1);
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
         }
 
         .card {
@@ -150,10 +151,10 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
             color: var(--status-open);
         }
 
-        .status-in-progress {
-            background-color: rgba(255, 152, 0, 0.1);
-            color: var(--status-in-progress);
-        }
+    .status-in_progress {
+  background-color: rgba(245, 124, 0, 0.1);
+  color: #f57c00;
+}
 
         .status-closed {
             background-color: rgba(117, 117, 117, 0.1);
@@ -189,20 +190,20 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         }
     </style>
     ";
-        // line 143
-        yield from $this->unwrap()->yieldBlock('extra_css', $context, $blocks);
         // line 144
+        yield from $this->unwrap()->yieldBlock('extra_css', $context, $blocks);
+        // line 145
         yield "</head>
 <body>
     ";
-        // line 146
-        yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
         // line 147
+        yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
+        // line 148
         yield "    <script src=\"/js/app.js\"></script>
     ";
-        // line 148
-        yield from $this->unwrap()->yieldBlock('extra_js', $context, $blocks);
         // line 149
+        yield from $this->unwrap()->yieldBlock('extra_js', $context, $blocks);
+        // line 150
         yield "</body>
 </html>
 ";
@@ -220,7 +221,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         yield from [];
     }
 
-    // line 143
+    // line 144
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -230,7 +231,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         yield from [];
     }
 
-    // line 146
+    // line 147
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -240,7 +241,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         yield from [];
     }
 
-    // line 148
+    // line 149
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -263,7 +264,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  244 => 148,  234 => 146,  224 => 143,  213 => 6,  206 => 149,  204 => 148,  201 => 147,  199 => 146,  195 => 144,  193 => 143,  53 => 6,  46 => 1,);
+        return array (  245 => 149,  235 => 147,  225 => 144,  214 => 6,  207 => 150,  205 => 149,  202 => 148,  200 => 147,  196 => 145,  194 => 144,  53 => 6,  46 => 1,);
     }
 
     public function getSourceContext(): Source

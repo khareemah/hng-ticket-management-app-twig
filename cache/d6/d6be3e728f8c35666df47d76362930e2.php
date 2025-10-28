@@ -67,20 +67,20 @@ class __TwigTemplate_a549fb4d92e5bf35ddcc1794888c0ad4 extends Template
     {
         $macros = $this->macros;
         // line 6
-        yield "<div class=\"min-h-screen flex items-center justify-center px-4 py-12\">
+        yield "<div class=\"min-h-screen bg-[#f1f1f1] flex items-center justify-center px-4 py-12\">
     <div class=\"w-full max-w-md\">
         <div class=\"card\">
-            <h2 class=\"text-3xl font-bold mb-2\">Welcome Back</h2>
+            <h2 class=\"text-3xl font-bold mb-1\">Welcome Back</h2>
             <p class=\"text-gray-600 mb-6\">Sign in to your TicketFlow account</p>
 
             ";
         // line 12
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 12), "get", ["error"], "method", false, false, false, 12)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+        if ((($tmp = ($context["error"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 13
-            yield "                <div class=\"error-message\">
-                    ";
+            yield "                <div class=\"mb-4 p-3 rounded-lg bg-red-100 border border-red-300 text-red-700 text-sm font-normal\">
+                ";
             // line 14
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 14), "get", ["error"], "method", false, false, false, 14), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["error"] ?? null), "html", null, true);
             yield "
                 </div>
             ";
@@ -102,13 +102,13 @@ class __TwigTemplate_a549fb4d92e5bf35ddcc1794888c0ad4 extends Template
             </form>
 
             <p class=\"text-center mt-6 text-gray-600\">
-                Don't have an account? <a href=\"/signup\" class=\"text-purple-600 hover:underline\">Sign up</a>
+                Don't have an account? <a href=\"/signup\" class=\"text-blue-600 hover:underline font-semibold\">Sign up</a>
             </p>
 
             <div class=\"mt-8 pt-8 border-t border-gray-200\">
                 <p class=\"text-sm font-medium mb-3\">Demo Credentials:</p>
-                <p class=\"text-sm text-gray-600\">Email: <code class=\"bg-gray-100 px-2 py-1 rounded\">test@example.com</code></p>
-                <p class=\"text-sm text-gray-600\">Password: <code class=\"bg-gray-100 px-2 py-1 rounded\">password123</code></p>
+                <p class=\"text-sm text-gray-600  \">Email: <span class=\"bg-gray-100 px-2 py-1  bg-[#CFE5FF] rounded\">test@example.com</span></p>
+                <p class=\"text-sm text-gray-600\">Password: <span class=\"bg-gray-100 px-2 py-1 bg-[#CFE5FF] rounded\">password123</span></p>
             </div>
         </div>
     </div>

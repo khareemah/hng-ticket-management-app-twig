@@ -73,9 +73,9 @@ class __TwigTemplate_87b874eee8668577e87afc69d6d5a843 extends Template
     <nav class=\"bg-white border-b border-gray-200\">
         <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">
             <div class=\"flex justify-between items-center h-16\">
-                <h1 class=\"text-2xl font-bold text-purple-600\">TicketFlow</h1>
+                <h1 class=\"text-2xl font-bold text-blue-600\">TicketFlow</h1>
                 <div class=\"hidden md:flex items-center gap-4\">
-                    <a href=\"/dashboard\" class=\"text-gray-700 hover:text-purple-600\">Dashboard</a>
+                    <a href=\"/dashboard\" class=\"text-gray-700 hover:text-blue-600\">Dashboard</a>
                     <a href=\"/logout\" class=\"btn-secondary\">Logout</a>
                 </div>
             </div>

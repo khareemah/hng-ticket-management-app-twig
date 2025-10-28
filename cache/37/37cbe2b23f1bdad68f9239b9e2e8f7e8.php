@@ -73,14 +73,14 @@ class __TwigTemplate_9d3c73b68d407be826dcb60e9a2ce4f3 extends Template
             <h2 class=\"text-3xl font-bold mb-2\">Create Account</h2>
             <p class=\"text-gray-600 mb-6\">Join TicketFlow today</p>
 
-            ";
+             ";
         // line 12
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 12), "get", ["error"], "method", false, false, false, 12)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+        if ((($tmp = ($context["error"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
             // line 13
-            yield "                <div class=\"error-message\">
-                    ";
+            yield "                <div class=\"mb-4 p-3 rounded-lg bg-red-100 border border-red-300 text-red-700 text-sm font-normal\">
+                ";
             // line 14
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 14), "get", ["error"], "method", false, false, false, 14), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["error"] ?? null), "html", null, true);
             yield "
                 </div>
             ";
@@ -107,7 +107,7 @@ class __TwigTemplate_9d3c73b68d407be826dcb60e9a2ce4f3 extends Template
             </form>
 
             <p class=\"text-center mt-6 text-gray-600\">
-                Already have an account? <a href=\"/login\" class=\"text-purple-600 hover:underline\">Sign in</a>
+                Already have an account? <a href=\"/login\" class=\"text-blue-600 font-medium hover:underline\">Sign in</a>
             </p>
         </div>
     </div>
