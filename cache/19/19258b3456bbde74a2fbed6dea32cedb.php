@@ -146,11 +146,23 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
             font-weight: 500;
         }
 
-        .status-open {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: var(--status-open);
-        }
+             .status-pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+  .status-open {
+  background-color: rgba(85, 107, 47, 0.12);
+  color: #556b2f; 
+}
 
+.status-total {
+  background-color: rgba(59, 130, 246, 0.1); /* soft blue tint */
+  color: #2563eb; /* Tailwind blue-600 */
+}
     .status-in_progress {
   background-color: rgba(245, 124, 0, 0.1);
   color: #f57c00;
@@ -190,20 +202,20 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         }
     </style>
     ";
-        // line 144
+        // line 156
         yield from $this->unwrap()->yieldBlock('extra_css', $context, $blocks);
-        // line 145
+        // line 157
         yield "</head>
 <body>
     ";
-        // line 147
+        // line 159
         yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
-        // line 148
+        // line 160
         yield "    <script src=\"/js/app.js\"></script>
     ";
-        // line 149
+        // line 161
         yield from $this->unwrap()->yieldBlock('extra_js', $context, $blocks);
-        // line 150
+        // line 162
         yield "</body>
 </html>
 ";
@@ -221,7 +233,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         yield from [];
     }
 
-    // line 144
+    // line 156
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -231,7 +243,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         yield from [];
     }
 
-    // line 147
+    // line 159
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -241,7 +253,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
         yield from [];
     }
 
-    // line 149
+    // line 161
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -264,7 +276,7 @@ class __TwigTemplate_ca5be053bf468727a92e9873f810f4ea extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  245 => 149,  235 => 147,  225 => 144,  214 => 6,  207 => 150,  205 => 149,  202 => 148,  200 => 147,  196 => 145,  194 => 144,  53 => 6,  46 => 1,);
+        return array (  257 => 161,  247 => 159,  237 => 156,  226 => 6,  219 => 162,  217 => 161,  214 => 160,  212 => 159,  208 => 157,  206 => 156,  53 => 6,  46 => 1,);
     }
 
     public function getSourceContext(): Source

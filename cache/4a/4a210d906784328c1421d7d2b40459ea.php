@@ -124,7 +124,7 @@ class __TwigTemplate_f20415a8d8fad47b1bf9dc5e7d7ef17a extends Template
 
   <!-- Hero Section -->
 
-  <section class=\"relative py-40 md:py-20 overflow-hidden\" >
+  <section class=\"relative py-40 md:py-20 overflow-hidden\" style=\"border:\">
   <div class=\"max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8\">
     <div class=\"grid md:grid-cols-2 gap-12 items-center\">
       <div>
@@ -168,6 +168,16 @@ class __TwigTemplate_f20415a8d8fad47b1bf9dc5e7d7ef17a extends Template
         yield "        </div>
       </div>
     </div>
+      <!-- Decorative circles -->
+          <div class=\"relative h-96 hidden md:block\">
+            <div
+              class=\"absolute top-0 right-0 w-64 h-64 bg-primary/30 rounded-full blur-3xl\"
+            ></div>
+            <div
+              class=\"absolute bottom-0 left-0 w-48 h-48 bg-accent/30 rounded-full blur-3xl\"
+            ></div>
+          </div>
+        </div>
   </div>
 </section>
 

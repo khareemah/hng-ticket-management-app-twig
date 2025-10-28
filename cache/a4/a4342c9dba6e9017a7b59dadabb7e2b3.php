@@ -70,84 +70,138 @@ class __TwigTemplate_4d7eca64a3f8ceba64a24a059c5571ec extends Template
         // line 6
         yield "<div class=\"min-h-screen bg-gray-50\">
     <!-- Navigation -->
-    <nav class=\"bg-white border-b border-gray-200\">
-        <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">
-            <div class=\"flex justify-between items-center h-16\">
-                <h1 class=\"text-2xl font-bold text-blue-600\">TicketFlow</h1>
-                <div class=\"hidden md:flex items-center gap-4\">
-                    <a href=\"/dashboard/tickets\" class=\"btn-primary\">Manage Tickets</a>
-                    <a href=\"/logout\" class=\"btn-secondary\">Logout</a>
-                </div>
-                <div class=\"md:hidden\">
-                    <button id=\"mobileMenuBtn\" class=\"text-gray-700\">
-                        <svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">
-                            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 12h16M4 18h16\"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <!-- Include Alpine.js if not already -->
+<script src=\"https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js\" defer></script>
+
+<nav x-data=\"{ open: false }\" class=\"bg-white border-b border-gray-200 backdrop-blur-md\">
+  <div class=\"max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8\">
+    <div class=\"flex justify-between items-center py-3\">
+      <!-- Left Section -->
+      <div>
+        <h2 class=\"text-3xl font-bold\">Dashboard</h2>
+        <p class=\"text-gray-600\">Welcome back, ";
+        // line 17
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["user"] ?? null), "name", [], "any", false, false, false, 17), "html", null, true);
+        yield "</p>
+      </div>
+
+      <!-- Desktop Links -->
+      <div class=\"hidden md:flex items-center gap-4\">
+        <a href=\"/dashboard/tickets\" class=\"btn-primary\">Manage Tickets</a>
+        <a href=\"/logout\" class=\"btn-secondary bg-[#fafafa] hover:bg-[#fafafa]\">Logout</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class=\"md:hidden\">
+        <button 
+          @click=\"open = !open\" 
+          class=\"text-gray-700 focus:outline-none\"
+          aria-label=\"Toggle navigation\"
+        >
+          <svg 
+            x-show=\"!open\"
+            xmlns=\"http://www.w3.org/2000/svg\" 
+            class=\"w-6 h-6\" 
+            fill=\"none\" 
+            viewBox=\"0 0 24 24\" 
+            stroke=\"currentColor\"
+          >
+            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" 
+              d=\"M4 6h16M4 12h16M4 18h16\" />
+          </svg>
+          <svg 
+            x-show=\"open\"
+            xmlns=\"http://www.w3.org/2000/svg\" 
+            class=\"w-6 h-6\" 
+            fill=\"none\" 
+            viewBox=\"0 0 24 24\" 
+            stroke=\"currentColor\"
+          >
+            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" 
+              d=\"M6 18L18 6M6 6l12 12\" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div 
+    x-show=\"open\"
+    x-transition
+    class=\"md:hidden border-t border-gray-200 bg-white\"
+  >
+    <div class=\"px-4 py-3 space-y-2\">
+      <a href=\"/dashboard/tickets\" class=\"block w-full text-center btn-primary\">Manage Tickets</a>
+      <a href=\"/logout\" class=\"block w-full text-center btn-secondary bg-[#fafafa] hover:bg-[#fafafa]\">Logout</a>
+    </div>
+  </div>
+</nav>
+
 
     <!-- Main Content -->
-    <main class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12\">
-        <div class=\"mb-8\">
-            <h2 class=\"text-3xl font-bold\">Dashboard</h2>
-            <p class=\"text-gray-600\">Welcome back, ";
-        // line 31
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["user"] ?? null), "name", [], "any", false, false, false, 31), "html", null, true);
-        yield "</p>
-        </div>
-
+    <main class=\"max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-[#fafafa]\">
+        
         <!-- Stats Grid -->
         <div class=\"grid md:grid-cols-4 gap-6 mb-12\">
-            <div class=\"card\">
-                <p class=\"text-gray-600 text-sm font-medium mb-2\">Total Tickets</p>
-                <p class=\"text-4xl font-bold text-blue-600\" id=\"totalTickets\">0</p>
-            </div>
-            <div class=\"card\">
-                <p class=\"text-gray-600 text-sm font-medium mb-2\">Open</p>
-                <p class=\"text-4xl font-bold text-green-600\" id=\"openTickets\">0</p>
-            </div>
-            <div class=\"card\">
-                <p class=\"text-gray-600 text-sm font-medium mb-2\">In Progress</p>
-                <p class=\"text-4xl font-bold text-orange-600\" id=\"inProgressTickets\">0</p>
-            </div>
-            <div class=\"card\">
-                <p class=\"text-gray-600 text-sm font-medium mb-2\">Closed</p>
-                <p class=\"text-4xl font-bold text-gray-600\" id=\"closedTickets\">0</p>
-            </div>
-        </div>
+  <div class=\"card border shadow-sm border-border p-4\">
+    <span class=\"status-pill status-total font-medium\">Total tickets</span>
+    <p class=\"text-4xl font-bold text-blue-600\" id=\"totalTickets\">0</p>
+  </div>
+
+  <div class=\"card border shadow-sm border-border p-4\">
+    <div class=\"flex items-center justify-between mb-2\">
+      <span class=\"status-pill status-open font-medium\">Open</span>
+    </div>
+    <p class=\"text-4xl font-bold text-[#556b2f]\" id=\"openTickets\">0</p>
+  </div>
+
+  <div class=\"card border shadow-sm border-border p-4\">
+    <div class=\"flex items-center justify-between mb-2\">
+      <span class=\"status-pill status-in_progress font-medium\">In progress</span>
+ 
+    </div>
+    <p class=\"text-4xl font-bold text-orange-600\" id=\"inProgressTickets\">0</p>
+  </div>
+
+  <div class=\"card border shadow-sm border-border p-4\">
+    <div class=\"flex items-center justify-between mb-2\">
+      <span class=\"status-pill status-closed\">Closed</span>
+    </div>
+    <p class=\"text-4xl font-bold text-gray-600\" id=\"closedTickets\">0</p>
+  </div>
+</div>
+
 
         <!-- Quick Actions -->
         <div class=\"card\">
-            <h3 class=\"text-xl font-bold mb-6\">Quick Actions</h3>
-            <div class=\"flex gap-4 flex-wrap\">
-                <a href=\"/dashboard/tickets/create\" class=\"btn-primary\">Create New Ticket</a>
-                <a href=\"/dashboard/tickets\" class=\"btn-secondary\">View All Tickets</a>
+            <h3 class=\"text-3xl font-bold mb-6\">Quick Actions</h3>
+            <div class=\"flex gap-4 flex flex-col md:flex-row\">
+                <a href=\"/dashboard/tickets/create\" class=\"btn-primary text-center flex-1\">Create New Ticket</a>
+                <a href=\"/dashboard/tickets\" class=\"btn-secondary text-center border border-border bg-[#f1f1f1] hover:bg-[#f1f1f1] flex-1\">View All Tickets</a>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class=\"bg-white border-t border-gray-200 mt-12 py-8 px-4\">
-        <div class=\"max-w-7xl mx-auto text-center text-gray-600\">
-            <p>&copy; 2025 TicketFlow. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer class=\"bg-[#004cc0]/10 border-t border-gray-200 mt-12 py-12 px-4\">
+    <div class=\"border-t border-border pt-8 text-center text-muted-foreground\">
+      <p>&copy; 2025 TicketFlow. All rights reserved.</p>
+    </div>
+  </footer>
 </div>
 ";
         yield from [];
     }
 
-    // line 73
+    // line 127
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_extra_js(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 74
+        // line 128
         yield "<script>
     function updateStats() {
         const tickets = JSON.parse(localStorage.getItem('ticketapp_tickets') || '[]');
@@ -157,6 +211,18 @@ class __TwigTemplate_4d7eca64a3f8ceba64a24a059c5571ec extends Template
         document.getElementById('closedTickets').textContent = tickets.filter(t => t.status === 'closed').length;
     }
     updateStats();
+
+      // === Responsive navbar toggle ===
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
 </script>
 ";
         yield from [];
@@ -183,7 +249,7 @@ class __TwigTemplate_4d7eca64a3f8ceba64a24a059c5571ec extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  151 => 74,  144 => 73,  98 => 31,  71 => 6,  64 => 5,  53 => 3,  42 => 1,);
+        return array (  205 => 128,  198 => 127,  84 => 17,  71 => 6,  64 => 5,  53 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
