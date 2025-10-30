@@ -142,6 +142,9 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
     <div id=\"ticketsList\" class=\"space-y-4\"></div>
   </main>
 
+  <!-- Toast Container (Top Right) -->
+  <div id=\"toastContainer\" class=\"fixed top-5 right-5 z-50 space-y-3\"></div>
+
   <!-- Footer -->
   <footer class=\"bg-[#004cc0]/10 border-t border-gray-200 mt-12 py-12 px-4\">
     <div class=\"border-t border-border pt-8 text-center text-muted-foreground\">
@@ -153,14 +156,14 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
         yield from [];
     }
 
-    // line 88
+    // line 91
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_extra_css(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 89
+        // line 92
         yield "<style>
   .filter-btn {
     padding: 0.5rem 1rem;
@@ -218,14 +221,14 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
         yield from [];
     }
 
-    // line 145
+    // line 147
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_extra_js(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 146
+        // line 148
         yield "<script>
   // Handle mobile menu toggle
   document.getElementById('menuToggle').addEventListener('click', () => {
@@ -236,62 +239,61 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
   let currentFilter = 'all';
   let openConfirmId = null;
 
- function loadTickets() {
-  const tickets = JSON.parse(localStorage.getItem(\"ticketapp_tickets\") || \"[]\");
-  const filtered =
-    currentFilter === \"all\"
-      ? tickets
-      : tickets.filter(t => t.status === currentFilter);
+  function loadTickets() {
+    const tickets = JSON.parse(localStorage.getItem(\"ticketapp_tickets\") || \"[]\");
+    const filtered =
+      currentFilter === \"all\"
+        ? tickets
+        : tickets.filter(t => t.status === currentFilter);
 
-  const ticketsList = document.getElementById(\"ticketsList\");
+    const ticketsList = document.getElementById(\"ticketsList\");
 
-  if (filtered.length === 0) {
-    ticketsList.innerHTML = `
-      <div class=\"bg-white border border-border rounded-lg p-8 sm:p-12 text-center\">
-        <p class=\"text-gray-700 text-lg mb-4\">No tickets found</p>
-        <a href=\"/dashboard/tickets/create\"
-           class=\"text-white bg-primary rounded-md px-6 py-3 text-[14px] btn-primary\">
-          Create your first ticket
-        </a>
-      </div>`;
-    return;
-  }
+    if (filtered.length === 0) {
+      ticketsList.innerHTML = `
+        <div class=\"bg-white border border-border rounded-lg p-8 sm:p-12 text-center\">
+          <p class=\"text-gray-700 text-lg mb-4\">No tickets found</p>
+          <a href=\"/dashboard/tickets/create\"
+             class=\"text-white bg-primary rounded-md px-6 py-3 text-[14px] btn-primary\">
+            Create your first ticket
+          </a>
+        </div>`;
+      return;
+    }
 
-  ticketsList.innerHTML = filtered.map(ticket => `
-    <div class=\"ticket-card flex flex-col\" id=\"ticket-\${ticket.id}\">
-      <div class=\"flex w-full justify-between items-start\">
-        <div class=\"flex-1\">
-          <h3 class=\"text-lg font-bold mb-2\">\${ticket.title}</h3>
-          <p class=\"text-gray-600 mb-3\">\${ticket.description || ''}</p>
-          <div class=\"flex gap-2 flex-wrap\">
-            <span class=\"status-badge status-\${ticket.status}\">
-              \${ticket.status.replace(\"_\", \" \")}
-            </span>
-            <span class=\"priority-\${ticket.priority ?? 'none'} font-medium\">
-              \${ticket.priority 
-                ? (ticket.priority.charAt(0).toUpperCase() + ticket.priority.slice(1) + ' Priority')
-                : ''}
-            </span>
+    ticketsList.innerHTML = filtered.map(ticket => `
+      <div class=\"ticket-card flex flex-col\" id=\"ticket-\${ticket.id}\">
+        <div class=\"flex w-full justify-between items-start\">
+          <div class=\"flex-1\">
+            <h3 class=\"text-lg font-bold mb-2\">\${ticket.title}</h3>
+            <p class=\"text-gray-600 mb-3\">\${ticket.description || ''}</p>
+            <div class=\"flex gap-2 flex-wrap\">
+              <span class=\"status-badge status-\${ticket.status}\">
+                \${ticket.status.replace(\"_\", \" \")}
+              </span>
+              <span class=\"priority-\${ticket.priority ?? 'none'} font-medium\">
+                \${ticket.priority 
+                  ? (ticket.priority.charAt(0).toUpperCase() + ticket.priority.slice(1) + ' Priority')
+                  : ''}
+              </span>
+            </div>
+          </div>
+          <div class=\"flex gap-2\">
+            <a href=\"/dashboard/tickets/edit?id=\${ticket.id}\"
+               class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1]\">Edit</a>
+            <button onclick=\"toggleConfirm('\${ticket.id}')\"
+                    class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition text-red-600\">Delete</button>
           </div>
         </div>
-        <div class=\"flex gap-2\">
-          <a href=\"/dashboard/tickets/edit?id=\${ticket.id}\"
-             class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition bg-[#f1f1f1]\">Edit</a>
-          <button onclick=\"toggleConfirm('\${ticket.id}')\"
-                  class=\"px-4 py-2 border border-border rounded-lg hover:bg-secondary transition text-red-600\">Delete</button>
+        <div id=\"confirm-\${ticket.id}\" class=\"hidden w-full flex flex-col items-start gap-3 bg-[#FFEAEA] confirm-inline text-red-600\">
+          <span>Are you sure you want to delete this ticket?</span>
+          <div class=\"flex gap-2\">
+            <button onclick=\"cancelConfirm('\${ticket.id}')\" class=\"bg-white border border-border hover:bg-white\">Cancel</button>
+            <button onclick=\"deleteTicket('\${ticket.id}')\" class=\"bg-red-600 hover:bg-red-700 text-white\">Delete</button>
+          </div>
         </div>
       </div>
-      <div id=\"confirm-\${ticket.id}\" class=\"hidden w-full flex flex-col items-start gap-3 bg-[#FFEAEA] confirm-inline text-red-600\">
-        <span>Are you sure you want to delete this ticket?</span>
-        <div class=\"flex gap-2\">
-          <button onclick=\"cancelConfirm('\${ticket.id}')\" class=\"bg-white border border-border hover:bg-white\">Cancel</button>
-          <button onclick=\"deleteTicket('\${ticket.id}')\" class=\"bg-red-600 hover:bg-red-700 text-white\">Delete</button>
-        </div>
-      </div>
-    </div>
-  `).join(\"\");
-}
-
+    `).join(\"\");
+  }
 
   function toggleConfirm(id) {
     if (openConfirmId && openConfirmId !== id) {
@@ -307,12 +309,42 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
     openConfirmId = null;
   }
 
+  // ✅ Toast Notification (Top-right, Green)
+  function showToast(message, type = \"success\") {
+    const toastContainer = document.getElementById(\"toastContainer\");
+    const toast = document.createElement(\"div\");
+
+    const color =
+      type === \"success\"
+        ? \"bg-green-600 text-white\"
+        : type === \"error\"
+        ? \"bg-red-600 text-white\"
+        : \"bg-gray-800 text-white\";
+
+    toast.className = `\${color} px-4 py-3 rounded-lg shadow-lg transform transition-all duration-500 opacity-0 translate-y-2`;
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    // Animate in
+    requestAnimationFrame(() => {
+      toast.classList.remove(\"opacity-0\", \"translate-y-2\");
+      toast.classList.add(\"opacity-100\", \"translate-y-0\");
+    });
+
+    // Auto remove
+    setTimeout(() => {
+      toast.classList.add(\"opacity-0\", \"translate-y-2\");
+      setTimeout(() => toast.remove(), 500);
+    }, 3000);
+  }
+
   function deleteTicket(id) {
     const tickets = JSON.parse(localStorage.getItem('ticketapp_tickets') || '[]');
     const filtered = tickets.filter(t => t.id !== id);
     localStorage.setItem('ticketapp_tickets', JSON.stringify(filtered));
     loadTickets();
     openConfirmId = null;
+    showToast(\"Ticket deleted successfully\", \"success\");
   }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -324,7 +356,7 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
     });
   });
 
-  loadTickets(); 
+  loadTickets();
 </script>
 ";
         yield from [];
@@ -351,7 +383,7 @@ class __TwigTemplate_7b74347a4217926ea2b3069e6a5a93a2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  229 => 146,  222 => 145,  164 => 89,  157 => 88,  72 => 6,  65 => 5,  54 => 3,  43 => 1,);
+        return array (  232 => 148,  225 => 147,  167 => 92,  160 => 91,  72 => 6,  65 => 5,  54 => 3,  43 => 1,);
     }
 
     public function getSourceContext(): Source

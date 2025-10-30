@@ -46,7 +46,8 @@
 
   <!-- Hero Section -->
 
- <section class="relative py-40 md:py-28 overflow-hidden bg-background">
+<!-- Hero Section -->
+<section class="relative py-40 md:py-28 overflow-hidden bg-background">
   <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <!-- Left content -->
@@ -60,7 +61,6 @@
         </p>
 
         <div class="flex gap-4">
-          <div class="flex items-center gap-4">
           {% if isAuthenticated %}
             <a href="/dashboard" class="btn-primary text-white">Dashboard</a>
           {% else %}
@@ -68,28 +68,29 @@
             <a href="/signup" class="btn-primary">Get Started</a>
           {% endif %}
         </div>
-        </div>
       </div>
 
-      <!-- Decorative blur elements -->
+      <!-- Decorative blobs and circles -->
       <div class="relative h-96 hidden md:block">
-        <!-- Top right gradient blob -->
+        <!-- Blurred gradient blobs -->
         <div
           class="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl"
           style="background: linear-gradient(135deg, #3B82F6aa, #60A5FA66, transparent);"
         ></div>
 
-        <!-- Bottom left gradient blob -->
         <div
           class="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl"
           style="background: linear-gradient(45deg, #60A5FA55, #3B82F633, transparent);"
         ></div>
 
-        <!-- Subtle middle circle -->
         <div
           class="absolute inset-0 m-auto w-40 h-40 rounded-full blur-2xl"
           style="background-color: #3B82F622;"
         ></div>
+
+        <!-- NEW: Two small stylish rotating circles -->
+        <div class="absolute top-12 left-32 w-6 h-6 bg-[#3B82F6] rounded-full animate-spin-slow shadow-lg"></div>
+        <div class="absolute bottom-20 right-24 w-8 h-8 bg-[#60A5FA] rounded-full animate-spin-reverse shadow-md"></div>
       </div>
     </div>
   </div>
@@ -102,17 +103,14 @@
       preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- First wave -->
       <path
         d="M0,160 Q360,120 720,160 T1440,160 L1440,200 L0,200 Z"
         fill="url(#blueWave1)"
       />
-      <!-- Second wave -->
       <path
         d="M0,180 Q360,140 720,180 T1440,180 L1440,200 L0,200 Z"
         fill="url(#blueWave2)"
       />
-
       <defs>
         <linearGradient id="blueWave1" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
@@ -126,6 +124,7 @@
     </svg>
   </div>
 </section>
+
 
 
 
@@ -239,6 +238,28 @@
 </footer>
 
 </div>
+
+
+<style>
+@keyframes spin-slow {
+  0% { transform: rotate(0deg) translateX(15px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(15px) rotate(-360deg); }
+}
+
+@keyframes spin-reverse {
+  0% { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(20px) rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 8s linear infinite;
+}
+
+</style>
 
 <!-- JS -->
 <script>
